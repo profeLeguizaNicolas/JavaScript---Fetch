@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript - Fetch</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="Imagenes/icono.png" type="image/x-icon">
+</head>
+<body>
+    <h1>
+        <span class="amarillo">JavaScript</span> - Fetch.
+    </h1>
+    <p>
+        Fetch es una función de <span class="amarillo">JavaScript</span> que permite realizar solicitudes <span class="celeste">HTTP</span> para obtener recursos de un servidor o enviarle información. Se utiliza, por ejemplo, para consultar <b>API</b>, recuperar archivos <b>JSON</b> y comunicarse con servicios web.
+    </p>
+    <p>
+        A diferencia de una asignación común, la información solicitada no está necesariamente disponible de inmediato. <span class="amarillo">JavaScript</span> debe esperar a que se complete la operación para poder trabajar con la respuesta.
+    </p>
+    <b>Sintaxis básica.</b>
+<pre><code class="cpp">    <span class="amarillo">fetch<span class="dorado">(<span class="celeste">"https://ejemplo.com/datos.json"</span>)</span></span>
+        .<span class="purpura">then</span><span class="dorado">(<span class="naranja">respuesta</span><span class="rojo"> => </span><span class="naranja">respueta</span>.<span class="purpura">json</span><span class="violeta">()</span>)</span>
+        .<span class="purpura">then</span><span class="dorado">(<span class="naranja">datos</span> <span class="rojo">=></span><span class="purpura">{
+            <span class="celeste">console</span>.<span class="purpura">log</span><span class="celeste">(<span class="naranja">datos</span>)</span>   
+        }</span>)</span>;</code></pre>
+
+    <p>
+        En este ejemplo se realiza una solicitud a una dirección web, se interpreta la respuesta como <b>JSON</b> y finalmente se muestran los datos obtenidos.   
+    </p>
+    <h3>
+        ¿Cómo funciona <code class="purpura">fetch<span class="dorado">()</span></code>
+    </h3>
+    <p>
+        El proceso se puede divir en tres etapas:
+    </p>
+    <fieldset>
+        <ol>
+            <li>
+                <h4>Realizar la solicitud.</h4>
+<pre><code class="cpp">    <span class="purpura">fetch <span class="dorado">(<span class="celeste">"https://ejemplo.com/datos.json"</span>)</span></span></code></pre>
+            <br>
+            <p>
+                Se inicia una solicitud al servidor utilizando la dirección indicada.
+            </p>
+            <br>
+            <hr>
+            </li>
+            <li>
+                <h4>Procesar la respuesta.</h4>
+<pre><code class="cpp">    .<span class="purpura">then</span><span class="dorado">(<span class="naranja">respuesta</span> <span class="rojo">=></span> <span class="naranja">respuesta</span>. <span class="purpura">json</span><span class="violeta">()</span>)</span></code></pre>
+            <br>
+            <p>
+                Se recibe un objeto <code class="gris">response</code> y se utiliza su método <code class="gris">json()</code> para interpretar el contenido de la respuesta.
+            </p>
+            <br>
+            <hr>
+            </li>
+            <li>
+                <h4>Utilizar los datos</h4>
+<pre><code class="cpp">     .<span class="purpura">then <span class="dorado">(</span><span class="naranja">datos</span> <span class="rojo">=></span>{
+        <span class="celeste">console</span><span class="gris">.</span>log</span><span class="dorado">(<span class="naranja">datos</span>)</span>;
+    <span class="purpura">}</span><span class="dorado">)</span>;</code></pre>
+            <br>
+            <p>
+                El parámetro <code class="gris">datos</code> recibe el resultado de la conversión y permite trabajar con la información obtenida.
+            </p>
+            <br>
+            <hr>
+            </li>
+        </ol>
+    </fieldset>
+    <h3>¿Qué es una promesa?</h3>
+    <p>
+        Una <i>Promise</i> (promesa) es un objeto de <span class="amarillo">JavaScript</span> que representa el resultado futuro de una operación que puede completarse correctamente o fallar.
+    </p>
+    <p>
+        <code class="gris">fetch()</code> devuelve una promesa por que la solicitud requiere tiempo y depende de la comunicación con el servidor.
+    </p>
+    <p>
+        Una promesa puede encontrarse en tres estados:
+    </p>
+    <ul>
+        <li>
+            <p>
+                <code class="gris">Pendiente</code>: La operación todavía no terminó.
+            </p> 
+        </li>
+        <li>
+            <p>
+                <code class="gris">Cumplida</code>: La operación se completó correctamente.
+            </p>
+        </li>
+        <li>
+            <p>
+                <code class="gris">Rechazada</code>: La operación falló.
+            </p>
+        </li>
+    </ul>
+    <p>
+        Para trabajar con el resultado de una promesa se puede utilizar el método <code class="gris">.then()</code>.
+    </p>
+    <h4>El método <code class="gris">.then()</code>.</h4>
+    <p>
+        Permite indicar una función que se ejecutará cuando la promesa anterior se cumpla. Esa función puede recibir como parámetro el resultado de la operación.
+    </p>
+<pre><code class="cpp">    .<span class="purpura">then</span><span class="dorado">(<span class="naranja">resultado</span><span class="rojo"> =></span> <span class="purpura">{</span> 
+        <span class="celeste">console</span>.<span class="purpura">log</span><span class="dorado">(<span class="naranja">resultado</span>)</span></span>;
+    <span class="purpura">}</span><span class="dorado">)</span>;</code></pre>
+    <br>
+    <p>
+        En este ejemplo, <code class="gris"><span class="purpura">resultado</span></code> es un parámetro de la función flecha. Recibe el valor que entrega la promesa anterior.
+    </p>
+    <p>
+        El nombre del parámetro puede cambiarse sin modificar el funcionamiento.
+    </p>
+<pre><code class="cpp">    .<span class="purpura">then</span><span class="dorado">(<span class="naranja">datos</span><span class="rojo"> =></span> <span class="purpura">{</span> 
+        <span class="celeste">console</span>.<span class="purpura">log</span><span class="dorado">(<span class="naranja">datos</span>)</span>;
+    <span class="purpura">}</span>)</span>;</code></pre>
+    <br>
+    <p>
+        En ambos casos, el parámetro recibe el resultado correspondiente. El nombre elegido sirve para identificarlo dentro de la función.
+    </p>
+    <hr>
+    <br>
+    <h4>
+        ¿Qué es <code class="gris">respuesta.json()</code>?
+    </h4>
+    <p>
+        Cuando se utiliza <code class="gris">fetch()</code>, el primer resultado es un objeto <code class="gris">Response</code>, que representa la respuesta <span class="naranja">HTTP</span> del servidor. Este objeto no es directamente el conjunto de datos que queremos utilizar.
+    </p>
+    <p>
+        Si el servidor devuelve contenido <span class="naranja">JSON</span>, podemos utilizar el método <code>.json()</code>
+    </p>
+<pre><code class="cpp">     <span class="naranja">respuesta</span>.<span class="purpura">json</span><span class="dorado">()</span></code></pre>
+    <br>
+    <p>
+        Este método lee el cuerpo de la respuesta e interpreta su contenido como <span class="naranja">JSON</span>. El resultado es otra promesa, que al cumplirse entrega el valor convertido a <span class="amarillo">JavaScript</span>.
+    </p>
+    <p>
+        Por ejemplo, si el servidor devuelve este <span class="naranja">JSON</span>:
+    </p>
+<pre><code class="cpp">    <span class="dorado">{
+        <span class="celeste">"nombre"</span>: <span class="celes">"Ana"</span>,
+        <span class="celeste">"edad"</span>: <span class="naranja">17</span>
+    }</span></code></pre>
+    <br>
+    <p>
+        podemos acceder a los datos obtenidos:
+    </p>
+<pre><code class="cpp">    .<span class="purpura">then</span><span class="dorado">(<span class="naranja">datos</span> <span class="rojo">=></span> <span class="purpura">{</span> 
+        <span class="celeste">console</span>.<span class="purpura">log</span>(<span class="naranja">datos</span>.<span class="celeste">nombre</span>);
+        <span class="celeste">console</span>.<span class="purpura">log</span>(<span class="naranja">datos</span>.<span class="celeste">edad</span>);
+    <span class="purpura">}</span>);</span></code></pre>
+    <p>
+        En este caso, <code class="gris">datos</code> es el parámetro que recibe el objeto convertido, <span class="naranja">nombre</span> y <span class="naranja">edad</span> son propiedades de ese objeto.
+    </p>
+    <h4>Acceder a las propiedades de un objeto</h4>
+    <p>
+        Una vez que los datos se encuentran disponibles en <span class="amarillo">JavaScript</span>, podemos acceder a sus propiedades utilizando la notación de punto.
+    </p>
+<pre><code class="cpp">    <span class="celeste">console</span>.<span class="purpura">log</span><span class="dorado">(<span class="naranja">datos</span>.<span class="celeste">nombre</span>)</span>;
+    <span class="celeste">console</span>.<span class="purpura">log</span><span class="dorado">(<span class="naranja">datos</span>. <span class="celeste">edad</span>)</span>;</code></pre>
+    <br>
+    <hr>
+    <u><b>Documentación oficial.</b></u>
+    <ul>
+        <li>
+            <p>
+                <a href="https://developer.mozilla.org/es/docs/Web/API/Fetch_API/Using_Fetch" target="_blank">MDN Web Docs /Fetch.</a>
+            </p>
+        </li>
+        <li>
+            <p>
+                <a href="https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise" target="_blank">MDN Web Docs / Promise</a>
+            </p>
+        </li>
+    </ul>
+    <br>
+    <hr>
+</body>
+</html>
